@@ -1,0 +1,7 @@
+{
+  "name": "QR-APP",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
