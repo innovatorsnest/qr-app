@@ -1,3 +1,5 @@
+import { StepperInputComponent } from './../shared/interceptor/stepper/stepper.component';
+
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -8,6 +10,7 @@ import { OrdersPageRoutingModule } from './orders-routing.module';
 
 import { OrdersPage } from './orders.page';
 
+
 @NgModule({
   imports: [
     CommonModule,
@@ -15,6 +18,6 @@ import { OrdersPage } from './orders.page';
     IonicModule,
     OrdersPageRoutingModule
   ],
-  declarations: [OrdersPage]
+  declarations: [OrdersPage, StepperInputComponent]
 })
 export class OrdersPageModule {}

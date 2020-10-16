@@ -1,0 +1,12 @@
+<div class="stepper-input stepper__input custom__stepper">
+    <button class="toggle-less" (click)="toggleLess()">
+      <!-- <img src="assets/minus.svg" [attr.alt]="ariaLabelLess" /> -->
+      <ion-icon name="remove-outline"></ion-icon>
+    </button>
+    <div class="stepper-input-field rendered__value" name="range-value" aria-atomic="true" aria-live="polite" aria-relevant="all">
+        {{renderedValue}}
+    </div>
+    <button class="toggle-more" (click)="toggleMore()">
+        <ion-icon name="add-outline"></ion-icon>
+    </button>
+  </div>

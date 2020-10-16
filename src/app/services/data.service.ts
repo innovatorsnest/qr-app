@@ -22,4 +22,10 @@ export class DataService {
       })
     );
   }
+
+  getAccessTokenFromQr(domainId,uniqueCode) {
+    // write the api here
+
+    return true;
+  }
 }

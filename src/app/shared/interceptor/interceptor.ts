@@ -3,8 +3,6 @@ import {
   HttpInterceptor,
   HttpRequest,
   HttpHandler,
-  HttpHeaders,
-  HttpErrorResponse,
   HttpClient,
   HttpEvent,
 } from '@angular/common/http';
