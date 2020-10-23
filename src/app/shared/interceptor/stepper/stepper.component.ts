@@ -1,4 +1,7 @@
+import { ObservablesService } from './../../../services/observable.services';
 import { Component, Input } from "@angular/core";
+import { timingSafeEqual } from 'crypto';
+
 
 @Component({
   selector: "stepper-input",
@@ -17,16 +20,39 @@ export class StepperInputComponent {
   renderedValue: string;
   value: number = 0;
 
+  @Input() product;
+
+  constructor(
+    private observableService: ObservablesService
+  ) {
+
+  }
+
   ngOnInit() {
     this.value = this.initialValue;
     this.renderedValue = this.value.toString();
+
+
   }
 
   toggleMore = () => {
-    
+
+
     if (this.step + this.value <= this.max) {
       this.value = this.value + this.step;
       this.renderedValue = this.value.toString();
+
+      console.log('rendered the value', this.renderedValue);
+      
+      const order = {
+        item: this.product,
+        count: this.renderedValue
+      }
+      this.observableService.updateOrders(order);
+
+
+      
+
     }
   };
 
@@ -38,6 +64,6 @@ export class StepperInputComponent {
   };
 
   trackValue() {
-      
+
   }
 }

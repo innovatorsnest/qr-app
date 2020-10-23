@@ -1,3 +1,4 @@
+import { ObservablesService } from './../services/observable.services';
 import { SharedModule } from "./../shared/shared.module";
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
@@ -17,7 +18,8 @@ import { HomePageRoutingModule } from "./home-routing.module";
     SharedModule
   ],
   declarations: [HomePage],
-  exports: []
+  exports: [],
+  providers: [ObservablesService]
 })
 
 export class HomePageModule { }

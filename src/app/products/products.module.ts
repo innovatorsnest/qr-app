@@ -1,3 +1,4 @@
+import { ObservablesService } from './../services/observable.services';
 import { SharedModule } from './../shared/shared.module';
 import { StepperInputComponent } from './../shared/interceptor/stepper/stepper.component';
 import { NgModule } from '@angular/core';
@@ -20,6 +21,7 @@ import { ProductsPage } from './products.page';
     ProductsPageRoutingModule,
     SharedModule
   ],
-  declarations: [ProductsPage, StepperInputComponent]
+  declarations: [ProductsPage, StepperInputComponent],
+  providers: [ObservablesService]
 })
 export class ProductsPageModule {}

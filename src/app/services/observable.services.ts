@@ -7,9 +7,10 @@ declare var $: any;
 @Injectable()
 export class ObservablesService {
 
+  cartProducts = [];
 
   private cartItems = new BehaviorSubject({});
-  domainNameObservable = this.cartItems.asObservable();
+  cartItemObservable = this.cartItems.asObservable();
 
 
 
@@ -19,6 +20,12 @@ export class ObservablesService {
 
   updateOrders(order) {
     this.cartItems.next(order);
+  }
+
+  getCartOrders() {
+    const products = localStorage.getItem('orders');
+    console.log('products', products);
+    return JSON.parse(products);
   }
 
 
