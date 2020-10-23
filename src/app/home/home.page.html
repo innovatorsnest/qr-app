@@ -1,5 +1,5 @@
 <ion-header class="ion-no-border">
-    <app-header [title]="'Categories'" ></app-header>
+  <app-header [title]="'Categories'"></app-header>
 </ion-header>
 
 <ion-content>
@@ -12,14 +12,17 @@
   </ion-slides>
 
   <ion-row>
-    <ion-col class="4" size="4" *ngFor="let category of categories">
-      <ion-card class="card">
+    <ion-col class="4" size="4" *ngFor="let category of allCategories">
+      <ion-card class="card" (click)="goToSubcategory(category)">
         <span class="card-banner">
           {{
             category.name
           }}
         </span>
-        <img class="card-image" src="../../assets/images/homes/{{category.image}}">
+        <img class="card-image" *ngIf="category.images?.length > 0; else dummyImage" src="{{category.images[0]}}">
+        <ng-template #dummyImage>
+          <img class="card-image"  src="../../assets/images/homes/dish.jpg">
+        </ng-template>
       </ion-card>
     </ion-col>
   </ion-row>

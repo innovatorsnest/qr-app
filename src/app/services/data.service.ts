@@ -8,13 +8,22 @@ import { map } from 'rxjs/operators';
 })
 export class DataService {
 
-  url = 'https://sandbox.smartbeings.ai/v1';
+  url = 'https://www.smartbeings.ai/v1';
   httpOptions: { headers: any; };
 
   constructor(
     private _http: HttpClient,
     private router: Router,
   ) {
+
+    const token = localStorage.getItem('token');
+    let headers: HttpHeaders = new HttpHeaders();
+    headers = headers.append('Content-Type', 'application/json');
+    headers = headers.append('Authorization', token);
+
+    this.httpOptions = {
+      headers: headers
+    }
 
   }
 
@@ -38,14 +47,13 @@ export class DataService {
   }
 
   getOrders() {
-    console.log('session token inside the get Orders', localStorage.getItem('token'));
 
     const token = localStorage.getItem('token');
     let headers: HttpHeaders = new HttpHeaders();
     headers = headers.append('Content-Type', 'application/json');
     headers = headers.append('Authorization', token);
 
-    return this._http.get(this.url + '/fnbOrder/Allorders', {headers: headers}).pipe(
+    return this._http.get(this.url + '/fnbOrder/Allorders', { headers: headers }).pipe(
       map((res) => {
         console.log('%c response from get all orders', 'color: yellow', res);
 
@@ -56,5 +64,50 @@ export class DataService {
 
   }
 
+
+  getAllCategories() {
+
+    const token = localStorage.getItem('token');
+    let headers: HttpHeaders = new HttpHeaders();
+    headers = headers.append('Content-Type', 'application/json');
+    headers = headers.append('Authorization', token);
+    // header - Authorization
+    return this._http.get(this.url + '/fnb/categories', { headers: headers }).pipe(
+      map((res) => {
+        console.log('%c response from get all categories', 'color: yellow', res);
+        return res;
+      })
+    );
+  }
+
+
+  getAllProductsInsideSubcategory(id) {
+    const token = localStorage.getItem('token');
+    let headers: HttpHeaders = new HttpHeaders();
+    headers = headers.append('Content-Type', 'application/json');
+    headers = headers.append('Authorization', token);
+    // header  - Authorization
+    return this._http.get(this.url + '/fnb/products?subCategoryId=' + id, {headers: headers}).pipe(
+      map((res) => {
+        console.log('%c response from getting products inside  sub category', 'color: yellow', res);
+        return res;
+      })
+    );
+
+  }
+
+  getAllSubCategoriesOfCategory(id) {
+    const token = localStorage.getItem('token');
+    let headers: HttpHeaders = new HttpHeaders();
+    headers = headers.append('Content-Type', 'application/json');
+    headers = headers.append('Authorization', token);
+    // header  - Authorization
+    return this._http.get(this.url + '/fnb/subCategories/' + id, { headers: headers }).pipe(
+      map((res) => {
+        console.log('%c response from getting sub category', 'color: yellow', res);
+        return res;
+      })
+    );
+  }
 }
 
