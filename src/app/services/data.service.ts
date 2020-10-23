@@ -43,7 +43,6 @@ export class DataService {
   logoutSession() {
     localStorage.clear();
     this.router.navigate(['login/null/null']);
-
   }
 
   getOrders() {
@@ -56,17 +55,14 @@ export class DataService {
     return this._http.get(this.url + '/fnbOrder/Allorders', { headers: headers }).pipe(
       map((res) => {
         console.log('%c response from get all orders', 'color: yellow', res);
-
         return res;
       })
-
     );
 
   }
 
 
   getAllCategories() {
-
     const token = localStorage.getItem('token');
     let headers: HttpHeaders = new HttpHeaders();
     headers = headers.append('Content-Type', 'application/json');
@@ -93,8 +89,22 @@ export class DataService {
         return res;
       })
     );
-
   }
+
+  createOrder(payload) {
+    const token = localStorage.getItem('token');
+    let headers: HttpHeaders = new HttpHeaders();
+    headers = headers.append('Content-Type', 'application/json');
+    headers = headers.append('Authorization', token);
+    // header - Content-Type , Authorization
+    return this._http.post(this.url + '/fnbOrder/order', payload, {headers: headers}).pipe(
+      map((res) => {
+        console.log('%c response from creating an order', 'color: yellow', res);
+        return res;
+      })
+    );
+  }
+
 
   getAllSubCategoriesOfCategory(id) {
     const token = localStorage.getItem('token');

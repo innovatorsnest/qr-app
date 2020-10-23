@@ -1,3 +1,4 @@
+import { ObservablesService } from './../services/observable.services';
 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -20,6 +21,7 @@ import { SharedModule } from '../shared/shared.module';
     SharedModule
 
   ],
-  declarations: [OrdersPage]
+  declarations: [OrdersPage],
+  providers: [ObservablesService]
 })
 export class OrdersPageModule {}

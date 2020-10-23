@@ -22,6 +22,7 @@ export class StepperInputComponent {
 
   @Input() product;
 
+
   constructor(
     private observableService: ObservablesService
   ) {
@@ -46,13 +47,11 @@ export class StepperInputComponent {
       
       const order = {
         item: this.product,
-        count: this.renderedValue
+        count: parseInt(this.renderedValue)
       }
+
       this.observableService.updateOrders(order);
-
-
       
-
     }
   };
 

@@ -9,17 +9,44 @@ export class ObservablesService {
 
   cartProducts = [];
 
-  private cartItems = new BehaviorSubject({});
+
+  private cartItems = new BehaviorSubject([]);
   cartItemObservable = this.cartItems.asObservable();
+  private orderItems = new BehaviorSubject([]);
+  orderItemsObservable = this.orderItems.asObservable();
+  
 
 
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) { 
+ 
+  }
+
 
 
 
   updateOrders(order) {
-    this.cartItems.next(order);
+
+
+    this.cartProducts = JSON.parse(localStorage.getItem('orders'));
+
+    if(this.cartProducts === null) {
+      this.cartProducts = [];
+      this.cartProducts.push(order);
+    } else {
+      this.cartProducts.push(order);
+    }
+    console.log('cart products', this.cartProducts);
+
+
+    this.cartItems.next(this.cartProducts);
+  }
+
+  updateOrderArray(orders) {
+    console.log('orders', orders);
+
+    
+    this.orderItems.next(orders);
   }
 
   getCartOrders() {

@@ -27,3 +27,199 @@
       padding-top: 3px;
       padding-bottom: 3px;
   }
+
+  ion-toolbar {
+    --background: #1a173a;
+    --ion-color-base: #fff;
+  }
+
+  ion-row  {
+    width: 100%;
+  }
+
+  .order-place-button {
+    --background: #6b66a2;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+  }
+
+  // summary 
+
+  @import url('https://fonts.googleapis.com/css?family=Work+Sans');
+
+// colors
+$black: #000;
+$green: #6fa450;
+$light-grey: #f4f4f4;
+$grey: #ccc;
+$white: #fff;
+$yellow: #fd0;
+
+// typography
+$font-size-base: 14px;
+
+// reset
+.no-margin { margin: 0; }
+
+a { color: inherit; }
+
+// FIX
+.clearfix,
+.clearfix:before {
+  content: '';
+  clear: both;
+  display: table;
+}
+
+.order {
+  background-color: $light-grey;
+  font-family: 'Work Sans', sans-serif;
+  font-size: $font-size-base;
+  padding: 15px;
+  
+  * {
+    // outline: 1px dotted orangered;
+  }
+  
+  // HEAD
+  .order__title {
+    float: left;
+    margin-bottom: 20px;
+  }
+  
+  #svg-summary {
+    float: right;
+  }
+  
+  .order__subtitles {
+    margin-bottom: 10px;
+    line-height: 1em;
+  }
+  
+  &__sub-sections {
+    margin-bottom: 20px;
+    margin-top: 20px;
+    width: 100%;
+  }
+  
+  &__subtotal {
+    // outline: 1px dotted orangered;
+    &__table {
+      // outline: 1px dotted orangered;
+      border-spacing: 0;
+      width: 320px;
+      
+      tbody {
+        background-color: $white;
+        border: 1px solid $black;
+        tr:first-child {
+          td {
+            border-top: 1px solid $black;
+          }
+        }
+        tr {
+          td {
+            padding: 5px;
+          }
+        }
+        .values--discounts {
+          color: $green;
+          font-weight: bold;
+        }
+      }
+      tfoot {
+        tr:first-child {
+          td {
+            border-top: 1px solid $black;
+            padding: 5px 0;
+          }
+        }
+        .values--total-text,
+        .values--total-price {
+          font-size: 1.857rem;
+          font-weight: bolder;
+          white-space: pre;
+        }
+      }
+    }
+  }
+  &__address {
+    
+  }
+  
+//   &__sub-sections {
+//     margin-bottom: 20px;
+//     margin-top: 20px;
+//     width: 100%;
+    
+//     table {
+//       border-spacing: 0;
+//       width: 320px;
+      
+//       tbody {
+//         background-color: $white;
+//         border: 1px solid $black;
+//         tr:first-child {
+//           td {
+//             border-top: 1px solid $black;
+//           }
+//         }
+//         tr {
+//           td {
+//             padding: 5px;
+//           }
+//         }
+//         .discount-text {
+//           color: $green;
+//           font-weight: bold;
+//         }
+//       }
+//       tfoot {
+//         tr:first-child {
+//           td {
+//             border-top: 1px solid $black;
+//             padding: 5px 0;
+//           }
+//           .values--total-text,
+//           .values--total-price {
+//             font-size: 1.857rem;
+//             font-weight: bolder;
+//             white-space: pre;
+//           }
+//         }
+//       }
+//     }
+//   }
+//   .order--address {
+//     border-bottom: 1px solid $grey;
+//     border-top: 1px solid $grey;
+//     padding-bottom: 15px;
+//     padding-top: 10px;
+//   }
+//   .order--sms {
+//     margin-bottom: 0;
+    
+//     .sms--info,
+//     .sms--svg {
+//       display: inline-block;
+//       vertical-align: middle;
+//     }
+//     .sms--svg {
+//       padding: 0 30px;
+//       svg {
+//         fill: $green;
+//       }
+//     }
+//     button {
+//       background-color: $yellow;
+//       border: 0px none;
+//       clear: both;
+//       display: block;
+//       font-size: 1em;
+//       margin-top: 20px;
+//       padding: 10px 0;
+//       width: 100%;
+//     }
+//   }
+}
