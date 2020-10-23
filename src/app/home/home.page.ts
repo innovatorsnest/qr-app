@@ -1,6 +1,10 @@
+import { DataService } from './../services/data.service';
+import { HelperService } from './../services/helper.service';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { domain } from 'process';
+import { timeout } from 'rxjs/operators';
+import { HttpHeaders } from '@angular/common/http';
 
 
 
@@ -12,8 +16,12 @@ import { domain } from 'process';
 export class HomePage implements OnInit {
 
   domainId;
+
+  httpOptions;
   constructor(
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private helper: HelperService,
+    private dataService: DataService,
   ) {
 
 
@@ -60,12 +68,25 @@ export class HomePage implements OnInit {
     }
   ];
 
-
-
   ngOnInit() {
+    
+
+  
+    
+    this.getOrders();
 
   }
 
+  getOrders() {
+    this.dataService.getOrders().subscribe((response) => {
+      console.log('%c response from getting the orders', 'color: yellow', response);
+      this.helper.loadingController.dismiss();
 
+    }, error => {
+      console.log('%c error while getting orders', 'color: yellow', error);
+      this.helper.loadingController.dismiss();
+
+    })
+  }
 
 }

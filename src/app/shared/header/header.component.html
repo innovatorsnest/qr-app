@@ -1,0 +1,10 @@
+<ion-toolbar class="toolbar">
+  <ion-buttons slot="start">
+    <ion-icon slot="icon-only" class="cart-icon" name="log-out-outline" (click)="logout()"></ion-icon>
+  </ion-buttons>
+  <ion-buttons slot="end">
+    <ion-icon slot="icon-only" class="cart-icon" name="cart-outline"></ion-icon>
+    <ion-badge color="danger" style="position: absolute; right: -5px; top: -3px;">{{cartCount || ''}}</ion-badge>
+  </ion-buttons>
+  <ion-title>{{title}}</ion-title>
+</ion-toolbar>
