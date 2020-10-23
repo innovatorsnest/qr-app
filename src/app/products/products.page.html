@@ -12,25 +12,36 @@
   </ion-slides>
 
   <ion-row>
-    <ion-col class="4" size="4" *ngFor="let product of products">
-      <ion-card class="card">
-        <span class="card-banner">
-          {{
-            product.name
-          }}
-        </span>
-        <stepper-input [step]="1" [product]="product" [min]="0" [max]="100" [initialValue]="0" symbol="%" ariaLabelLess="Less 10"
-        ariaLabelMore="Plus 10">
-      </stepper-input>
-      <img class="card-image" *ngIf="product.images.length > 0; else dummyImage" src="{{product.images[0]}}">
-      <ng-template #dummyImage>
-        <img class="card-image"  src="../../assets/images/homes/soup.jpg">
-      </ng-template>
-      </ion-card>
-    </ion-col>
+    <ng-container *ngIf="products?.length > 0; else noData">
+      <ion-col class="4" size="4" *ngFor="let product of products">
+        <ion-card class="card">
+          <span class="card-banner">
+            {{
+              product.name
+            }}
+          </span>
+          <stepper-input [step]="1" [product]="product" [min]="0" [max]="100" [initialValue]="0" symbol="%"
+            ariaLabelLess="Less 10" ariaLabelMore="Plus 10">
+          </stepper-input>
+          <img class="card-image" *ngIf="product.images.length > 0; else dummyImage" src="{{product.images[0]}}">
+          <ng-template #dummyImage>
+            <img class="card-image" src="../../assets/images/homes/soup.jpg">
+          </ng-template>
+        </ion-card>
+      </ion-col>
+    </ng-container>
+
+    <ng-template #noData>
+      <ion-list style="    text-align: center;
+    width: 100%;    margin-top: 50px;
+    margin-bottom: 50px;">
+        <span>No Products</span>
+      </ion-list>
+    </ng-template>
+ 
   </ion-row>
 
- 
+
 
 
 </ion-content>

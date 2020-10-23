@@ -53,15 +53,22 @@ export class OrdersPage implements OnInit {
 
 
   placeOrder() {
-    console.log('order summary', this.orderSummary);
-    this.dataService.createOrder(this.orderSummary).subscribe((response) => {
-      this.helperService.presentToast('Order Places Successfully');
-      localStorage.setItem('orders',JSON.stringify([]));
-      this.router.navigate(['home']);
-    }, error => {
-      this.helperService.presentToast('Error while Placing Order');
+    this.customOrderPlaced();
+    // console.log('order summary', this.orderSummary);
+    // this.dataService.createOrder(this.orderSummary).subscribe((response) => {
+    //   this.helperService.presentToast('Order Places Successfully');
+    //   localStorage.setItem('orders',JSON.stringify([]));
+    //   this.router.navigate(['home']);
+    // }, error => {
+    //   this.helperService.presentToast('Error while Placing Order');
       
-    })
+    // })
     
+  }
+
+  customOrderPlaced() {
+    this.helperService.presentToast('Order Places Successfully');
+    localStorage.setItem('orders',JSON.stringify([]));
+    this.router.navigate(['home']);
   }
 }

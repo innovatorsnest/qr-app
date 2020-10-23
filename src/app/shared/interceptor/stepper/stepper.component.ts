@@ -1,6 +1,5 @@
 import { ObservablesService } from './../../../services/observable.services';
 import { Component, Input } from "@angular/core";
-import { timingSafeEqual } from 'crypto';
 
 
 @Component({
@@ -51,7 +50,7 @@ export class StepperInputComponent {
       }
 
       this.observableService.updateOrders(order);
-      
+
     }
   };
 

@@ -1,29 +1,40 @@
 <ion-header class="ion-no-border">
-  <app-header [title]="'Sub Category'" ></app-header>
+  <app-header [title]="'Sub Category'"></app-header>
 </ion-header>
 
 <ion-content>
-<ion-slides pager="true" [options]="slideOpts">
-  <ion-slide class="slide">
-    <span class="banner">
-    </span>
-    <img src="../../assets/images/homes/home.jpg" alt="">
-  </ion-slide>
-</ion-slides>
-
-<ion-row>
-  <ion-col class="4" size="4" *ngFor="let subcategory of subCategories">
-    <ion-card class="card" (click)="goToProduct(subcategory)">
-      <span class="card-banner">
-        {{
-          subcategory.name
-        }}
+  <ion-slides pager="true" [options]="slideOpts">
+    <ion-slide class="slide">
+      <span class="banner">
       </span>
-    <img class="card-image" *ngIf="subcategory.images.length > 0; else dummyImage" src="{{subcategory.images[0]}}">
-      <ng-template #dummyImage>
-        <img class="card-image"  src="../../assets/images/homes/dish.jpg">
-      </ng-template>
-    </ion-card>
-  </ion-col>
-</ion-row>
+      <img src="../../assets/images/homes/home.jpg" alt="">
+    </ion-slide>
+  </ion-slides>
+
+  <ion-row>
+    <ng-container *ngIf="subCategories?.length > 0; else noData">
+      <ion-col class="4" size="4" *ngFor="let subcategory of subCategories">
+        <ion-card class="card" (click)="goToProduct(subcategory)">
+          <span class="card-banner">
+            {{
+            subcategory.name
+          }}
+          </span>
+          <img class="card-image" *ngIf="subcategory.images.length > 0; else dummyImage"
+            src="{{subcategory.images[0]}}">
+          <ng-template #dummyImage>
+            <img class="card-image" src="../../assets/images/homes/dish.jpg">
+          </ng-template>
+        </ion-card>
+      </ion-col>
+    </ng-container>
+    <ng-template #noData>
+      <ion-list style="    text-align: center;
+    width: 100%;    margin-top: 50px;
+    margin-bottom: 50px;">
+        <span>No Subcategy</span>
+      </ion-list>
+    </ng-template>
+
+  </ion-row>
 </ion-content>
