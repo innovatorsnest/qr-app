@@ -6,10 +6,10 @@ import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss'],
+  templateUrl: './header.page.html',
+  styleUrls: ['./header.page.scss'],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderPage implements OnInit {
 
   @Input() title;
   @Input() cartCount = 0;
@@ -26,12 +26,12 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.observableService.cartItemObservable.subscribe((orders) => {
-     console.log('orders', orders);
-     this.orders = orders;
+      console.log('orders', orders);
+      this.orders = orders;
 
-     orders.forEach((item, index) => {
-       this.cartCount = item.count
-     })
+      orders.forEach((item, index) => {
+        this.cartCount = item.count
+      })
     })
   }
 
@@ -46,6 +46,6 @@ export class HeaderComponent implements OnInit {
     orders.length = 0;
     localStorage.setItem('orders', JSON.stringify(this.orders));
     this.router.navigate(['orders']);
-  } 
+  }
 
 }

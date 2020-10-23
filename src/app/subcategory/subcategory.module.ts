@@ -1,3 +1,4 @@
+import { HeaderPageModule } from './../shared/header/header.module';
 import { ObservablesService } from './../services/observable.services';
 import { SharedModule } from './../shared/shared.module';
 import { NgModule } from '@angular/core';
@@ -16,7 +17,8 @@ import { SubcategoryPage } from './subcategory.page';
     FormsModule,
     IonicModule,
     SubcategoryPageRoutingModule,
-    SharedModule
+    SharedModule,
+    HeaderPageModule
   ],
   declarations: [SubcategoryPage],
   providers: [ObservablesService]

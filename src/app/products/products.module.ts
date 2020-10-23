@@ -1,3 +1,4 @@
+import { HeaderPageModule } from './../shared/header/header.module';
 import { ObservablesService } from './../services/observable.services';
 import { SharedModule } from './../shared/shared.module';
 import { StepperInputComponent } from './../shared/interceptor/stepper/stepper.component';
@@ -19,7 +20,8 @@ import { ProductsPage } from './products.page';
     FormsModule,
     IonicModule,
     ProductsPageRoutingModule,
-    SharedModule
+    SharedModule,
+    HeaderPageModule
   ],
   declarations: [ProductsPage, StepperInputComponent],
   providers: [ObservablesService]

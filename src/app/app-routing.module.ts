@@ -27,6 +27,10 @@ const routes: Routes = [
   {
     path: 'products/:id',
     loadChildren: () => import('./products/products.module').then( m => m.ProductsPageModule)
+  },
+  {
+    path: 'header',
+    loadChildren: () => import('./shared/header/header.module').then( m => m.HeaderPageModule)
   }
 ];
 

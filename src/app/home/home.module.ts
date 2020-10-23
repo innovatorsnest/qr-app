@@ -1,3 +1,4 @@
+import { HeaderPageModule } from './../shared/header/header.module';
 import { ObservablesService } from './../services/observable.services';
 import { SharedModule } from "./../shared/shared.module";
 import { NgModule } from "@angular/core";
@@ -15,7 +16,8 @@ import { HomePageRoutingModule } from "./home-routing.module";
     FormsModule,
     IonicModule,
     HomePageRoutingModule,
-    SharedModule
+    SharedModule,
+    HeaderPageModule
   ],
   declarations: [HomePage],
   exports: [],
