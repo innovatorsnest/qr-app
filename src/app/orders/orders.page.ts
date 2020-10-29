@@ -13,7 +13,7 @@ import { Component, OnInit } from '@angular/core';
 export class OrdersPage implements OnInit {
   orders: any;
 
-  totalAmount :any;
+  totalAmount: any;
   orderSummary: { items: any[]; currency: string; amount: number; };
 
   constructor(
@@ -24,31 +24,32 @@ export class OrdersPage implements OnInit {
     private router: Router,
   ) { }
 
- 
+
   slideOpts = {
     initialSlide: 1,
     speed: 400
   };
-  
+
 
   ngOnInit() {
-     this.orders = JSON.parse(localStorage.getItem('orders'));
-     console.log('orders', this.orders);
-     console.log(this.orders);
-     const payload = {
-       items: [],
-       currency: '$',
-       amount: 0
- 
-     };
-     this.orders.forEach((order,index) => {
-       payload.items.push(order.item);
-       payload.amount = order.count * order.item.price;
-     })
+    const cartItems = JSON.parse(localStorage.getItem('cartItems'));
+    console.log('orders',this.orders);
 
-     
-     this.orderSummary = payload;
-     console.log('payload', payload);
+    this.orders = cartItems["products"];
+    
+    const payload = {
+      items: [],
+      currency: '$',
+      amount: 0
+    };
+
+    this.orders.forEach((order, index) => {
+      payload.items.push(order);
+      payload.amount = order.count * order.price;
+    })
+
+    this.orderSummary = payload;
+    console.log('payload', payload);
   }
 
 
@@ -61,14 +62,14 @@ export class OrdersPage implements OnInit {
     //   this.router.navigate(['home']);
     // }, error => {
     //   this.helperService.presentToast('Error while Placing Order');
-      
+
     // })
-    
+
   }
 
   customOrderPlaced() {
     this.helperService.presentToast('Order Places Successfully');
-    localStorage.setItem('orders',JSON.stringify([]));
+    localStorage.setItem('orders', JSON.stringify([]));
     this.router.navigate(['home']);
   }
 }

@@ -223,3 +223,22 @@ a { color: inherit; }
 //     }
 //   }
 }
+
+.order {
+
+  &_count, &_name, &_instructions {
+    font-size: 14px;
+  }
+
+  &_count {
+
+  }
+
+  &_name {
+
+  }
+
+  &_instructions {
+
+  }
+}
