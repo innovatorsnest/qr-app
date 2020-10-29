@@ -142,12 +142,6 @@ export class ProductsPage implements OnInit {
     const total = cartItems["products"].map(item => item.count).reduce((prev, next) => prev + next);
     console.log('update total count', total);
     this.observableService.updateCartItems(total);
-    // if(cartItems.length > 0 && cartItems.length <= 1) {
-    //   this.observableService.updateCartItems(0);
-    // } else {
-    //   this.observableService.updateCartItems(0);
-    // }
-
   }
 
 }
