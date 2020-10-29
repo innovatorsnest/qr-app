@@ -20,7 +20,7 @@
               product.name
             }}
           </span>
-          <stepper-input [step]="1" [product]="product" [min]="0" [max]="100" [initialValue]="0" symbol="%"
+          <stepper-input [step]="1" [product]="product" [min]="0" [count]="product.count" (countUpdated)="productCount($event,product)" [max]="100" [initialValue]="product.count || 0" symbol="%"
             ariaLabelLess="Less 10" ariaLabelMore="Plus 10">
           </stepper-input>
           <img class="card-image" *ngIf="product.images.length > 0; else dummyImage" src="{{product.images[0]}}">

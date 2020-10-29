@@ -1,5 +1,5 @@
 import { ObservablesService } from './../../../services/observable.services';
-import { Component, Input } from "@angular/core";
+import { Component, Input, Output, EventEmitter } from "@angular/core";
 
 
 @Component({
@@ -16,8 +16,11 @@ export class StepperInputComponent {
   @Input() symbol: string;
   @Input() ariaLabelLess: string;
   @Input() ariaLabelMore: string;
-  renderedValue: string;
+  @Input() count: number;
+  renderedValue: number;
   value: number = 0;
+
+  @Output() countUpdated = new EventEmitter();
 
   @Input() product;
 
@@ -30,26 +33,24 @@ export class StepperInputComponent {
 
   ngOnInit() {
     this.value = this.initialValue;
-    this.renderedValue = this.value.toString();
+    
+    this.renderedValue = this.value;
 
 
   }
 
   toggleMore = () => {
+    
+    
 
 
     if (this.step + this.value <= this.max) {
       this.value = this.value + this.step;
-      this.renderedValue = this.value.toString();
+      this.renderedValue = this.value;
 
       console.log('rendered the value', this.renderedValue);
       
-      const order = {
-        item: this.product,
-        count: parseInt(this.renderedValue)
-      }
-
-      this.observableService.updateOrders(order);
+      this.countUpdated.emit(this.renderedValue);
 
     }
   };
@@ -57,7 +58,11 @@ export class StepperInputComponent {
   toggleLess = () => {
     if (this.value - this.step >= this.min) {
       this.value = this.value - this.step;
-      this.renderedValue = this.value.toString();
+      this.renderedValue = this.value;
+
+      console.log('rendered the value', this.renderedValue);
+      
+      this.countUpdated.emit(this.renderedValue);
     }
   };
 

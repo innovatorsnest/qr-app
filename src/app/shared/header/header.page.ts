@@ -22,18 +22,36 @@ export class HeaderPage implements OnInit {
     private data: DataService,
     private observableService: ObservablesService,
     private router: Router,
-  ) { }
+  ) {
+
+      this.updateTotalProductCount();
+   }
+
+   updateTotalProductCount() {
+
+    const cartItems = JSON.parse(localStorage.getItem('cartItems'));
+    console.log('cart items', cartItems);
+  
+    const total = cartItems["products"].map(item => item.count).reduce((prev, next) => prev + next);
+    console.log('update total count', total);
+    this.observableService.updateCartItems(total);
+
+  }
+
 
   ngOnInit() {
-    this.observableService.cartItemObservable.subscribe((orders) => {
-      console.log('orders', orders);
-      this.orders = orders;
-
-      orders.forEach((item, index) => {
-        this.cartCount = item.count
-      })
+    this.observableService.cartItemObservable.subscribe((count) => {
+      console.log('count inside the observable', );
+      this.cartCount = count
     })
+
+    
+
+
+
   }
+
+
 
   logout() {
     this.data.logoutSession();
